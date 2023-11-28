@@ -4,7 +4,7 @@ This repository is the official implementation of the following paper.
 
 **[Embodied Multi-Modal Agent trained by an LLM from a Parallel TextWorld]()**
 <br/>
-[Yijun Yang](https://scholar.google.com/citations?user=X0quXnsAAAAJ&hl=en), [Tainyi Zhou](https://tianyizhou.github.io/), Kanxue Li, [Dapeng Tao](https://scholar.google.com/citations?user=AQzS40gAAAAJ&hl=en), Lvsong Li, [Li Shen](https://sites.google.com/site/mathshenli/home), [Xiaodong He](https://scholar.google.com/citations?user=W5WbqgoAAAAJ&hl=en), [Jing Jiang](https://profiles.uts.edu.au/Jing.Jiang), [Yuhui Shi](https://scholar.google.com/citations?user=xSvAHWgAAAAJ&hl=en)
+[Yijun Yang](https://scholar.google.com/citations?user=X0quXnsAAAAJ&hl=en), [Tianyi Zhou](https://tianyizhou.github.io/), Kanxue Li, [Dapeng Tao](https://scholar.google.com/citations?user=AQzS40gAAAAJ&hl=en), Lvsong Li, [Li Shen](https://sites.google.com/site/mathshenli/home), [Xiaodong He](https://scholar.google.com/citations?user=W5WbqgoAAAAJ&hl=en), [Jing Jiang](https://profiles.uts.edu.au/Jing.Jiang), [Yuhui Shi](https://scholar.google.com/citations?user=xSvAHWgAAAAJ&hl=en)
 <br/>
 
 [![License](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/) 
