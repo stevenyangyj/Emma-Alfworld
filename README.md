@@ -18,4 +18,16 @@ This repository is the official implementation of the following paper.
 
 
 ## TODO
-- [ ] Release code very soon
+- [x] Release [sft dataset](https://huggingface.co/datasets/yijunyang/alfworld-sft-dataset) for ALFWorld
+- [x] Release a [13b instructblip model](https://huggingface.co/yijunyang/instructblip-sft-alfworld) finetuned on the sft dataset
+- [] Release imitation learning code
+- [] **Note that it might be impossible to precisely reproduce our results shown in the paper due to the OAI has deprecated the LLM (i.e., text-davinci-003) we used in the experiment**. Hence, we plan to release a new EMMA trained by the replacement (gpt-3.5-turbo-instruct) via Dagger with DPO
+- [] Support to train EMMA using open-sourced LLMs
+
+## How to finetune InstructBLIP on the ALFWorld sft dataset
+1. Download dataset from [huggingface](https://huggingface.co/datasets/yijunyang/alfworld-sft-dataset)
+2. Install LAVIS via "pip install -e ."
+3. Download pretrained vicuna-7/13b-v1.1 model from [here](https://github.com/lm-sys/FastChat/blob/main/docs/vicuna_weights_version.md)
+4. Update the configuration file (./LAVIS/lavis/projects/instructblip/finetuning/alfworld_ft.yaml) to indicate the paths of the sft dataset and the pretrained model
+5. "bash LAVIS/run_scripts/instructblip/finetuning/ft_caption_alfworld.sh"
+
