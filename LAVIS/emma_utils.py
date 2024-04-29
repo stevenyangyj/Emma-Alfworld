@@ -38,8 +38,8 @@ TOKEN_LIMIT = {
     "text-davinci-003": 4097,
 }
 
-os.environ["OPENAI_API_KEY"] = "9113c4ea-0fbf-4414-8c2f-61445917d294"
-os.environ["OPENAI_API_BASE"] = "http://gpt-proxy.jd.com/gateway/azure"
+os.environ["OPENAI_API_KEY"] = ""
+os.environ["OPENAI_API_BASE"] = ""
 
 openai.api_key = os.getenv('OPENAI_API_KEY')
 openai.api_base = os.getenv('OPENAI_API_BASE')
