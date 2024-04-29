@@ -20,7 +20,7 @@ This repository is the official implementation of the following paper.
 ## TODO
 - [x] Release [sft dataset](https://huggingface.co/datasets/yijunyang/alfworld-sft-dataset) for ALFWorld
 - [x] Release a [13b instructblip model](https://huggingface.co/yijunyang/instructblip-sft-alfworld) finetuned on the sft dataset
-- [] Release imitation learning code
+- [x] Release imitation learning code (just for reference and wait for refactoring)
 - [] **Note that it might be impossible to precisely reproduce our results shown in the paper due to the OAI has deprecated the LLM (i.e., text-davinci-003) we used in the experiment**. Hence, we plan to release a new EMMA trained by the replacement (gpt-3.5-turbo-instruct) via Dagger with DPO
 - [] Support to train EMMA using open-sourced LLMs
 
