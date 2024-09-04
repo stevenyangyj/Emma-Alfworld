@@ -1,0 +1,101 @@
+model:
+  arch: blip2_emma
+  model_type: vicuna7b
+
+  load_finetuned: False
+  load_pretrained: True
+
+  pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/InstructBLIP/instruct_blip_vicuna7b_trimmed.pth"
+
+  # emma
+  low_memory: True
+
+  # vit encoder
+  freeze_vit: True
+  image_size: 224
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+
+  # Q-Former
+  num_query_token: 32
+  qformer_text_input: False
+  adaptor_tuning: False
+  freeze_qformer: True
+  freeze_proj_layer: False
+
+  # path to Vicuna checkpoint
+  llm_model: "/home/yangyijun14/.cache/huggingface/hub/vicuna-7b-v1.1"
+  max_txt_len: 1024
+  max_output_txt_len: 128
+  
+  # dpo's configs
+  avg_log_probs: True
+  mix_ratio: 0.5
+  
+  # misc
+  apply_lemmatizer: False
+
+datasets:
+  alfworld_cap: # name of the dataset builder
+    data_type: images # [images|videos|features]
+    vis_processor:
+        train:
+          name: "blip_image_eval"
+          image_size: 224
+        eval:
+          name: "blip_image_eval"
+          image_size: 224
+    text_processor:
+        train:
+          name: "blip_alfworld"
+          prompt: ""
+          max_words: 1024
+        eval:
+          name: "blip_alfworld"
+          prompt: ""
+          max_words: 1024
+    build_info:
+      # Be careful not to append minus sign (-) before split to avoid itemizing
+      annotations:
+        train:
+          url: /home/yangyijun14/.cache/datasets/annotations/train.json
+          storage: /home/yangyijun14/.cache/datasets/annotations/train.json
+      images:
+        storage: /home/yangyijun14/.cache/datasets/images
+
+run:
+  task: captioning
+  # optimizer
+  lr_sched: "linear_warmup_cosine_lr"
+  init_lr: 1e-5
+  min_lr: 0
+  warmup_lr: 1e-8
+  warmup_steps: 1000
+  weight_decay: 0.05
+  max_epoch: 10
+  batch_size_train: 8
+  batch_size_eval: 1
+  num_workers: 4
+  accum_grad_iters: 4
+
+  # for generation
+  max_len: 128
+  min_len: 5
+  num_beams: 5
+
+  seed: 42
+  output_dir: "output/EMMA/no_text_cond_proj_tuning"
+
+  amp: True
+  resume_ckpt_path: null
+
+  evaluate: False
+  train_splits: ["train"]
+  valid_splits: []
+  test_splits: []
+
+  device: "cuda"
+  world_size: 4
+  dist_url: "env://"
+  distributed: True

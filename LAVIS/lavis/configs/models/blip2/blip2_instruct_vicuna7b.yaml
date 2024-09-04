@@ -1,0 +1,50 @@
+ # Copyright (c) 2022, salesforce.com, inc.
+ # All rights reserved.
+ # SPDX-License-Identifier: BSD-3-Clause
+ # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+
+model:
+  arch: blip2_vicuna_instruct
+  model_type: vicuna7b
+
+  load_finetuned: False
+  load_pretrained: True
+
+  # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/InstructBLIP/instruct_blip_vicuna7b_trimmed.pth"
+  pretrained: "/home/yijunyan/Data/PyCode/LAVIS/lavis/output/InstructBLIP/Caption_Alfworld/20230819035/checkpoint_99.pth"
+  finetuned: ""
+
+  # vit encoder
+  image_size: 224
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+  freeze_vit: True
+
+  # Q-Former
+  num_query_token: 32
+  qformer_text_input: True
+
+  # path to Vicuna checkpoint
+  llm_model: "lmsys/vicuna-7b-v1.1"
+  max_txt_len: 2048
+  max_output_txt_len: 128
+  apply_lemmatizer: False
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip2_image_train"
+          image_size: 224
+        eval:
+          name: "blip_image_eval"
+          image_size: 224
+    text_processor:
+        train:
+          name: "blip_alfworld"
+          prompt: "Your task is to: "
+          max_words: 2048
+        eval:
+          name: "blip_alfworld"
+          prompt: "Your task is to: "
+          max_words: 2048

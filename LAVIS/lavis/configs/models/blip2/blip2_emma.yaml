@@ -1,0 +1,60 @@
+model:
+  arch: blip2_emma
+  model_type: vicuna7b
+  
+  load_basemodel: True
+  load_finetuned: False
+  load_pretrained: True
+  
+  base_model: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/InstructBLIP/instruct_blip_vicuna7b_trimmed.pth"
+  ref_pretrained: "/home/yangyijun14/repos/EMMA/LAVIS/align_outputs/bc_server_human_desc/dpo-False-tc-False-20231021212602/emma_checkpoint_11.pth"
+  # "/home/yangyijun14/repos/EMMA/LAVIS/lavis/output/EMMA/no_text_cond_proj_tuning/20231010193/checkpoint_5.pth"
+  # "/home/yangyijun14/repos/EMMA/LAVIS/align_outputs/bc_server/dpo-False-tc-False-20231011235423/emma_checkpoint_10.pth"
+  pretrained: "/home/yangyijun14/repos/EMMA/LAVIS/align_outputs/bc_server_human_desc/dpo-False-tc-False-20231021212602/emma_checkpoint_11.pth"
+
+  # emma
+  low_memory: True
+
+  # vit encoder
+  freeze_vit: True
+  image_size: 224
+  drop_path_rate: 0
+  use_grad_checkpoint: False
+  vit_precision: "fp16"
+
+  # Q-Former
+  num_query_token: 32
+  qformer_text_input: False
+  adaptor_tuning: False
+  freeze_qformer: True
+  freeze_proj_layer: False
+
+  # path to Vicuna checkpoint
+  llm_model: "/home/yangyijun14/.cache/huggingface/hub/vicuna-7b-v1.1"
+  max_txt_len: 1024
+  max_output_txt_len: 128
+
+  # dpo's configs
+  avg_log_probs: True
+  mix_ratio: 0.5
+
+  # misc
+  apply_lemmatizer: False
+
+preprocess:
+    vis_processor:
+        train:
+          name: "blip2_image_train"
+          image_size: 224
+        eval:
+          name: "blip_image_eval"
+          image_size: 224
+    text_processor:
+        train:
+          name: "blip_alfworld"
+          prompt: ""
+          max_words: 1024
+        eval:
+          name: "blip_alfworld"
+          prompt: ""
+          max_words: 1024

@@ -7,11 +7,9 @@ __pycache__/
 *.so
 
 # logging & configs
-*.json
 *.log
 *.pth
-*.yaml
-*.sh
+*.DS_Store
 
 # Distribution / packaging
 .Python
