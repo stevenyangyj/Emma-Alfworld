@@ -25,9 +25,20 @@ This repository is the official implementation of the following paper.
 - [] Support to train EMMA using open-sourced LLMs
 
 ## How to finetune InstructBLIP on the ALFWorld sft dataset
-1. Download dataset from [huggingface](https://huggingface.co/datasets/yijunyang/alfworld-sft-dataset)
+1. Download our dataset from [huggingface](https://huggingface.co/datasets/yijunyang/alfworld-sft-dataset)
 2. Install LAVIS via "pip install -e ."
 3. Download pretrained vicuna-7/13b-v1.1 model from [here](https://github.com/lm-sys/FastChat/blob/main/docs/vicuna_weights_version.md)
 4. Update the configuration file (./LAVIS/lavis/projects/instructblip/finetuning/alfworld_ft.yaml) to indicate the paths of the sft dataset and the pretrained model
 5. "bash LAVIS/run_scripts/instructblip/finetuning/ft_caption_alfworld.sh"
 
+## Citing EMMA
+If you use the code in EMMA, please kindly cite our paper using the following BibTeX entry.
+```
+@inproceedings{yang2024embodied,
+  title={Embodied multi-modal agent trained by an llm from a parallel textworld},
+  author={Yang, Yijun and Zhou, Tianyi and Li, Kanxue and Tao, Dapeng and Li, Lusong and Shen, Li and He, Xiaodong and Jiang, Jing and Shi, Yuhui},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={26275--26285},
+  year={2024}
+}
+```
